@@ -6,7 +6,31 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello Mizan</h1>
+    <h1>This is Mizan</h1>
+    <div id="app">
+        <h2 v-if="message.length % 2 === 0"> Even: {{ message.toUpperCase() }}</h2>
+        <h2 v-else>Odd: {{ message }}</h2>
+        <ul v-for="i in items">
+            <li >{{ i.id }}</li>
+            <ul v-for="l in i.list">
+                <li>{{l}}</li>
+            </ul>
+        </ul>
+    </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const { createApp } = Vue
+
+        const app = createApp({
+            data(){
+                return{
+                    message : "Hello vue!",
+                    items: [{name:1, id:'d9f01517-900e-4ce6-9f1a-2982e0652c7c'}, {name:2, id:'f816fa7d-0fa7-4ece-a177-6a18778886fa', list:[1,2,3]}, {name:3, id:'206578e6-e01e-44de-95aa-73a29e888655', list:[1,2,3]}, {name:4, id:'8308781f-b550-4a2b-b727-ac88c8a98307', list:[1,2,3]}, {name:5, id:'cccff1b7-1d62-4a06-998e-4e13d668441d', list:[1,2,3]}]
+                }
+            }
+        })
+
+        app.mount("#app")
+    </script>
 </body>
 </html>
